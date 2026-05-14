@@ -4,9 +4,12 @@
   - su -
   - password 입력
   - root@ubuntu:#  sudo usermod -aG sudo ubuntu
+  - su ubuntu
+  - ubuntu@ubuntu:/root$ cd
+  - ubuntu@ubuntu:~$  
 
 - packege list Update & Upgrade
-  - sudo apt-get update && sudo apt-get upgrade -y
+  - sudo apt update && sudo apt upgrade -y
 
 took install (Network check, Text editor, Distributed Shell
 sudo apt-get install -y net-tools vim openssh-server pip
