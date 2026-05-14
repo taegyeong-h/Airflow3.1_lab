@@ -1,4 +1,4 @@
-## 1. Ubuntu 22.04 
+## 1. Ubuntu 22.04 In Virtualbox
 
 - ubuntu incloude in sudo group  -- ubuntu 일반 유저도 sudo 명령어를 사용하기 위해서는 sudo group 에 ubuntu 계정을 넣어줘야한다  
   - su -
