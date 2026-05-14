@@ -4,8 +4,8 @@
   - su -        -- root 계정 로그인 (password 입력 프롬프트 뒤에 "$" -> "#" 확인)   
   - root@ubuntu:#  sudo usermod -aG sudo ubuntu   -- ubuntu 일반 계정에 sudo Group 에 포함시켜 sudo 사용권한을 가진다  
   - su ubuntu           -- root 계정에서 ubuntu 일반 계정으로 전환 (마찬가지로 프롬프트 뒤에 "#" -> "$" 확인) 
-  - ubuntu@ubuntu:/root$ cd        -- ubuntu 홈 디렉토리 
-  - ubuntu@ubuntu:~$  
+  - ubuntu@ubuntu:/root$ cd        
+  - ubuntu@ubuntu:~$              -- ubuntu 홈 디렉토리 에서 작업 시작
 
 - packege list Update & Upgrade
   - sudo apt update && sudo apt upgrade -y
