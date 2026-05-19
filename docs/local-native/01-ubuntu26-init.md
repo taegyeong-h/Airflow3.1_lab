@@ -80,9 +80,27 @@ export CONSTRAINT_URL="https://raw.githubusercontent.com/apache/airflow/constrai
 pip install "apache-airflow==3.2.1" --constraint "${CONSTRAINT_URL}"
 airflow version
 # 출력결과: 3.2.1
+```
 
 
 
+
+
+
+
+
+
+## 아래는 02. 03 파일로 구분 예정
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 
 
@@ -92,7 +110,7 @@ airflow version
 airflow db migrate
 - Database migrating done!
 
-```
+
 1. 관리자 계정 생성 아직 로그인할 수 있는 "열쇠"가 없습니다. 웹 UI에 접속하려면 계정을 먼저 파야 합니다.
 
 ## 2. Airflow 3.2 설치 및 Standalone 실행 (빠른 배포용)
