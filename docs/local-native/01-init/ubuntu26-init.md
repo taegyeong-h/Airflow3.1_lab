@@ -89,9 +89,9 @@ mkdir dags
 
 
 ## 4. [선택] PostgreSQL 엔진 설치 (실무 운영용)
-# 💡 이 단계는 향후 `standalone` 또는 `컴포넌트 분리 기동` 환경에서 SQLite의 단일 태스크 실행 제약을 풀고, 
-# 진짜 멀티 워커 병렬 처리를 연동하기 위한 사전 필수 RDBMS 엔진 셋업입니다.
-# (각 실행 모드별 `postgres.md` 가이드를 따라갈 독자들만 이 단계를 실행하면 됩니다.)
+💡 이 단계는 향후 `standalone` 또는 `컴포넌트 분리 기동` 환경에서 SQLite의 단일 태스크 실행 제약을 풀고, 
+진짜 멀티 워커 병렬 처리를 연동하기 위한 사전 필수 RDBMS 엔진 셋업입니다.
+(각 실행 모드별 `postgres.md` 가이드를 따라갈 독자들만 이 단계를 실행하면 됩니다.)
 
 ```bash
 # PostgreSQL 엔진 설치
@@ -102,22 +102,44 @@ sudo apt install -y postgresql postgresql-contrib
 PostgreSQL 관리자 계정으로 접속하여, Airflow 엔진이 사용할 독립된 데이터베이스 스키마와 접근 계정을 생성하고 권한을 부여합니다.
 
 ```bash
-# 1. postgres 마스터 계정으로 전환하여 SQL 콘솔(psql) 진입
+1. postgres 마스터 계정으로 전환하여 SQL 콘솔(psql) 진입
 sudo -i -u postgres psql
 SQL
 -- 2. 에어플로우 전용 계정 생성 (계정명: airflow / 비밀번호: airflow)
 CREATE USER airflow WITH PASSWORD 'airflow';
-# 출력결과: CREATE ROLE
+출력결과: CREATE ROLE
 
 -- 3. 메타데이터를 저장할 독립된 데이터베이스 생성 (DB명: airflow)
 CREATE DATABASE airflow;
 # 출력결과: CREATE DATABASE
 -- 4. 생성한 데이터베이스에 대한 모든 권한을 airflow 유저에게 부여
 GRANT ALL PRIVILEGES ON DATABASE airflow TO airflow;
-# 출력결과: GRANT
+출력결과: GRANT
+
+ALTER DATABASE airflow OWNER TO airflow;
+ALTER DATABASE
+
+postgres=# \l
+                                                     List of databases
+   Name    |  Owner   | Encoding | Locale Provider |   Collate   |    Ctype    | Locale | ICU Rules |   Access privileges
+-----------+----------+----------+-----------------+-------------+-------------+--------+-----------+-----------------------
+ airflow   | airflow  | UTF8     | libc            | en_US.UTF-8 | en_US.UTF-8 |        |           | =Tc/airflow          +
+           |          |          |                 |             |             |        |           | airflow=CTc/airflow
+ postgres  | postgres | UTF8     | libc            | en_US.UTF-8 | en_US.UTF-8 |        |           |
+ template0 | postgres | UTF8     | libc            | en_US.UTF-8 | en_US.UTF-8 |        |           | =c/postgres          +
+           |          |          |                 |             |             |        |           | postgres=CTc/postgres
+ template1 | postgres | UTF8     | libc            | en_US.UTF-8 | en_US.UTF-8 |        |           | =c/postgres          +
+           |          |          |                 |             |             |        |           | postgres=CTc/postgres
+(4 rows)
+
 
 -- 5. 콘솔 탈출
 \q or exit
+
+
+
+
+
 
 
 
