@@ -43,7 +43,7 @@ python3.11 --version
 ```
 bash
 # Ubuntu 26.04의 기본 파이썬(3.14)과 분리하기 위해 독립된 가상환경 방을 만듭니다.
-python3.2 -m venv ~/airflow_venv
+python3.11 -m venv ~/airflow_venv
 source ~/airflow_venv/bin/activate
 # 정상 활성화 시 터미널 프롬프트 앞에 (airflow_venv)가 표시됩니다.
 
