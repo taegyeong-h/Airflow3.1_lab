@@ -77,10 +77,13 @@ echo $AIRFLOW_HOME
 # 1. 3.2.1 전용으로 고정된 제약조건 URL 주소로 변경
 export CONSTRAINT_URL="https://raw.githubusercontent.com/apache/airflow/constraints-3.2.1/constraints-3.11.txt"
 
-# 2. 설치 명령어 재실행
+# 2. 설치 명령어 
 pip install "apache-airflow==3.2.1" --constraint "${CONSTRAINT_URL}"
 airflow version
 # 출력결과: 3.2.1
+# 3. 에어플로우 홈 디렉토리 이동 및 DAG 폴더 생성 (유저님 생각 정답!)
+cd ~/airflow
+mkdir dags
 ```
 
 
@@ -91,7 +94,7 @@ airflow version
 
 
 
-## 아래는 02. 03 파일로 구분 예정
+## 아래는 02. 03 파일로 구분 예정 생략가능 
 <br>
 <br>
 <br>
