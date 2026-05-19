@@ -138,6 +138,26 @@ postgres=# \l
 -- 5. 콘솔 탈출
 \q or exit
 
+# 외부에서 접근 가능하도록 설정 
+sudo ss -tlpn | grep 5432    
+[sudo: authenticate] Password:
+LISTEN 0      200        127.0.0.1:5432      0.0.0.0:*    users:(("postgres",pid=44794,fd=7))
+LISTEN 0      200            [::1]:5432         [::]:*    users:(("postgres",pid=44794,fd=6))
+
+sudo vim /etc/postgresql/18/main/postgresql.conf
+
+#listen_addresses = 'localhost'
+listen_addresses = '*'
+
+4. 포스트그레스 깨우기 (재시작)
+Bash
+sudo systemctl restart postgresql
+
+## 127.0.0.1:5432 -> 0.0.0.0 으로 변경 완료
+sudo ss -tlpn | grep 5432
+LISTEN 0      200          0.0.0.0:5432      0.0.0.0:*    users:(("postgres",pid=46135,fd=6)) 
+LISTEN 0      200             [::]:5432         [::]:*    users:(("postgres",pid=46135,fd=7))
+
 
 
 
